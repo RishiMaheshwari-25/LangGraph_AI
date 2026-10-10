@@ -1,6 +1,6 @@
 import { ChatGroq } from "@langchain/groq";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { ChatCohere } from "@langchain/cohere";
+import { CohereClientV2 } from "cohere-ai";
 
 import config from "../config/config.js"
 
@@ -11,10 +11,13 @@ export const groqModel = new ChatGroq({
 
 export const geminiModel = new ChatGoogleGenerativeAI({
     apiKey: config.GEMINI_API_KEY,
-    model: "gemini-2.5-flash",
+    model: "gemini-3.8-flash",
+});
+export const cohereModel = new CohereClientV2({
+    token: config.COHERE_API_KEY,
 });
 
-export const cohereModel = new ChatCohere({
-    apiKey: config.COHERE_API_KEY,
-    model: "command-a-plus-05-2026",
-});
+// export const cohereModel = new CohereClientV2({
+//     apiKey: config.COHERE_API_KEY,
+//     model: "command-a-plus-05-2026",
+// });
